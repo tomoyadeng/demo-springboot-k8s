@@ -1,0 +1,8 @@
+bootJar {
+    baseName = 'k8s-service'
+    version = "${projectVersion}"
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+}
