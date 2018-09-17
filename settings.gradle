@@ -1,3 +1,4 @@
 rootProject.name = 'demo-springboot-k8s'
 include 'k8s-service'
+include 'k8s-db'
 
