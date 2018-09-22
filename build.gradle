@@ -51,7 +51,7 @@ subprojects {
     }
 
     dependencies {
-        compile group: 'org.projectlombok', name: 'lombok', version: '1.18.0'
+        compile group: 'org.projectlombok', name: 'lombok', version: '1.18.2'
         runtime('org.springframework.boot:spring-boot-devtools')
         testCompile('org.springframework.boot:spring-boot-starter-test')
     }
