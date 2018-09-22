@@ -1,0 +1,6 @@
+spring:
+  profiles: k8s
+app:
+  db:
+    host: ${APP_MYSQL_HOST}
+    port: ${APP_MYSQL_PORT}

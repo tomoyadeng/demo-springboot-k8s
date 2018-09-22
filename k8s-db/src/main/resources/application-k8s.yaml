@@ -2,7 +2,7 @@ spring:
   profiles: k8s
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   datasource:
     url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/k8s?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
     driverClassName: com.mysql.jdbc.Driver

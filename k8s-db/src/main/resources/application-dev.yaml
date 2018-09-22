@@ -2,7 +2,7 @@ spring:
   profiles: dev
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   datasource:
     url: jdbc:mysql://localhost:3306/k8s?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
     driverClassName: com.mysql.jdbc.Driver

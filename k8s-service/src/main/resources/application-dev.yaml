@@ -1,0 +1,8 @@
+spring:
+  profiles: dev
+app:
+  db:
+    host: localhost
+    port: 8080
+server:
+  port: 8088
