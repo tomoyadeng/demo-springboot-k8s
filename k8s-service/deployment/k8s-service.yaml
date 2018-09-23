@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: k8s-service
-        image: com.tomoyadeng/k8s-service:1.0
+        image: com.tomoyadeng/k8s-service:1.1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
