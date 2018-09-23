@@ -20,3 +20,8 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
+        env:
+        - name: APP_MYSQL_HOST
+          value: k8s-db
+        - name: APP_MYSQL_PORT
+          value: '8080'
