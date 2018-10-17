@@ -1,22 +1,12 @@
 # demo-springboot-k8s
-A demo for deploy spring boot application in Kubernetes
+在Kubernetes中部署Spring boot应用的小demo
 
-### Build
+### 构建
 
 ```bash
 gradle clean build buildDocker
 ```
 
-### Deploy
+### 部署 & 验证
 
-```bash
-kubectl create -f k8s-service/deployment/k8s-service.yaml
-
-kubectl expose deployment k8s-service --type=LoadBalancer
-```
-
-### Verification
-
-```bash
-curl $(minikube service k8s-service --url)/hello
-```
+见各子工程的README
