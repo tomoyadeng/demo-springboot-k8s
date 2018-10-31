@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-replica
+  labels:
+    app: mysql-replica
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+    protocol: TCP
+  selector:
+    app: mysql-replica
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mysql-replica-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: replica
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-replica
+  labels:
+    app: mysql-replica
+spec:
+  selector:
+    matchLabels:
+      app: mysql-replica
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql-replica
+    spec:
+      containers:
+      - image: tomoyadeng/mysql-replica:5.7.1
+        name: mysql
+        env:
+        - name: MYSQL_MASTER_SERVICE_HOST
+          value: mysql-master
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: rootpwd
+        - name: MYSQL_REPLICATION_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: repluser
+        - name: MYSQL_REPLICAITON_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: replpwd
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-replica-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-replica-storage
+        persistentVolumeClaim:
+          claimName: mysql-replica-pvc

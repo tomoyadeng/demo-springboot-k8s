@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-master
+  labels:
+    app: mysql-master
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+    protocol: TCP
+  selector:
+    app: mysql-master
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mysql-master-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: master
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-master
+  labels:
+    app: mysql-master
+spec:
+  selector:
+    matchLabels:
+      app: mysql-master
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql-master
+    spec:
+      containers:
+      - image: tomoyadeng/mysql-master:5.7.1
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: rootpwd
+        - name: MYSQL_REPLICATION_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: repluser
+        - name: MYSQL_REPLICAITON_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: replpwd
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-master-pvc
