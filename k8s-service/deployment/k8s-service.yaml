@@ -22,6 +22,6 @@ spec:
         - containerPort: 8080
         env:
         - name: APP_MYSQL_HOST
-          value: k8s-db
+          value: k8s-singledb
         - name: APP_MYSQL_PORT
           value: '8080'

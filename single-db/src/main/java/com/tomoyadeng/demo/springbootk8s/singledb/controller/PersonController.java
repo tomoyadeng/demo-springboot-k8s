@@ -1,7 +1,7 @@
-package com.tomoyadeng.demo.springboot.k8s.db.controller;
+package com.tomoyadeng.demo.springbootk8s.singledb.controller;
 
-import com.tomoyadeng.demo.springboot.k8s.db.domain.Person;
-import com.tomoyadeng.demo.springboot.k8s.db.repository.PersonRepository;
+import com.tomoyadeng.demo.springbootk8s.singledb.domain.Person;
+import com.tomoyadeng.demo.springbootk8s.singledb.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;

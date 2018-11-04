@@ -1,4 +1,4 @@
-package com.tomoyadeng.demo.springboot.k8s.db;
+package com.tomoyadeng.demo.springbootk8s.singledb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

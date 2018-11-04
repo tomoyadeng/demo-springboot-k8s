@@ -1,6 +1,6 @@
-package com.tomoyadeng.demo.springboot.k8s.db.repository;
+package com.tomoyadeng.demo.springbootk8s.singledb.repository;
 
-import com.tomoyadeng.demo.springboot.k8s.db.domain.Person;
+import com.tomoyadeng.demo.springbootk8s.singledb.domain.Person;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

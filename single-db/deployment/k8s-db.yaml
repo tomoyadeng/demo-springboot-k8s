@@ -1,36 +1,36 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: k8s-db
+  name: single-db
   labels:
-    app: k8s-db
+    app: single-db
 spec:
   ports:
   - port: 8080
     protocol: TCP
     targetPort: 8080
   selector:
-    app: k8s-db
+    app: single-db
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: k8s-db
+  name: single-db
   labels:
-    app: k8s-db
+    app: single-db
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: k8s-db
+      app: single-db
   template:
     metadata:
       labels:
-        app: k8s-db
+        app: single-db
     spec:
       containers:
-        - name: k8s-db
-          image: com.tomoyadeng/k8s-db:1.1
+        - name: single-db
+          image: com.tomoyadeng/single-db:1.1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

@@ -1,4 +1,4 @@
-package com.tomoyadeng.demo.springboot.k8s.db.domain;
+package com.tomoyadeng.demo.springbootk8s.singledb.domain;
 
 import lombok.Data;
 

@@ -13,10 +13,10 @@ import java.util.Optional;
 
 @Repository
 public class PersonDao implements AbstractDao<Person> {
-    @Value("${app.db.host}")
+    @Value("${app.singledb.host}")
     private String dbServiceHost;
 
-    @Value("${app.db.port}")
+    @Value("${app.singledb.port}")
     private String dbServicePort;
 
     private String url;
